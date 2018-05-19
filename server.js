@@ -23,13 +23,13 @@ app.use((req,res,next)=>{
     next(); // without next(), code will not execute remaining commands
 })
 
-app.use((req,res,next)=>{
+// app.use((req,res,next)=>{
 
-    res.render('maintenance.hbs',{
-        pageTitle : 'Site Maintenance',
-        message : 'Site is down for maintenance. Sorry for the inconvenience, will be back online tomorrow!'
-    });
-})
+//     res.render('maintenance.hbs',{
+//         pageTitle : 'Site Maintenance',
+//         message : 'Site is down for maintenance. Sorry for the inconvenience, will be back online tomorrow!'
+//     });
+// })
 app.use(express.static(__dirname + '/public'));  //app.use register middleware
 hbs.registerHelper('getCurrentYear',() => {
     return new Date().getFullYear();
@@ -52,6 +52,14 @@ app.get('/about',(req,res)=>{
     //res.render('about.hbs');
     res.render('about.hbs',{
       pageTitle: 'About Page'
+    //  currentYear : new Date().getFullYear() 
+    });
+});
+
+app.get('/projects',(req,res)=>{
+    //res.render('about.hbs');
+    res.render('projects.hbs',{
+      pageTitle: 'Projects Page'
     //  currentYear : new Date().getFullYear() 
     });
 });
